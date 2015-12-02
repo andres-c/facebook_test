@@ -27,6 +27,7 @@
                         <strong>token</strong>: <%= user.facebook.token %><br>
                         <strong>email</strong>: <%= user.facebook.email %><br>
                         <strong>name</strong>: <%= user.facebook.name %>
+                        
                     </p>
             </div>
         </div>
@@ -36,7 +37,7 @@
 </div>
 
 <div>
-    <form id="fbpost" action="./post" method="post">
+    <form id="postMessage" action="./post" method="post">
       <p>Message: <input type="text" placeholder="Enter message" id="message" name="message" /></p>
       <input type="submit" name="submit" value="Submit" />
     </form>

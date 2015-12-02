@@ -1,18 +1,16 @@
 var express = require('express')
   , api = require('./config/facebook')
-  , passport = require('./config/passport')
+  , pass = require('./config/passport')
   , app = express();
-var app      = express();
+
 var port     = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 
 var request = require('request');
-var graph = require('fbgraph');
+// var graph = require('fbgraph');
 var FB = require('fb');
-
-
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -46,10 +44,21 @@ app.post('/post', function(req, res) {
   // Check to ensure user has a valid access_token
 
     // Call function that contains API call to post on Facebook (see facebook.js)
-    api.postMessage(passport.access_token, req.body.message, res);
+    FB.api(
+
+    "/me/feed",
+    "POST",
+    {
+        message: "This is a test message"
+    },
+    function (response) {
+      if (response && !response.error) {
+        /* handle the result */
+      }
+    }
+);
     
   });
-
 
 // launch ======================================================================
 app.listen(port);
