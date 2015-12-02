@@ -1,6 +1,6 @@
 ## Local needs Facebook App ID and App Secret in config/secret.js
 
-Create the file secret.js in the config folder, then copy and paste the following code with your Facebook App ID and App secret.
+Create the file secret.js in the config folder, then copy and paste the following code into secret.js with your Facebook App ID and App secret.
 
 module.exports = {
 
