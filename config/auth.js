@@ -1,7 +1,4 @@
-// expose our config directly to our application using module.exports
-
 var secret = require('./secret.js');
-
 
 module.exports = {
 
