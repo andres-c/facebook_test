@@ -1,4 +1,5 @@
 var User            = require('../app/models/user');
+var FB = require('fb');
 
 module.exports = function(app, passport) {
 
@@ -24,6 +25,26 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    app.post('/post',
+        passport.authenticate('facebook'),
+        function (req, res, message) {
+        FB.api(
+            "/{user-id}/feed",
+            "POST",
+            {
+                'message': message
+            },
+            function (response) {
+              if (response && !response.error) {
+                /* handle the result */
+                successRedirect : '/profile'
+                alert('Demo was liked successfully! Action ID: ' + response.id);
+              }
+            }
+        );
+        }
+    );
 };
 
 function isLoggedIn(req, res, next) {
